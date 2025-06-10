@@ -1,0 +1,104 @@
+.footer {
+  background-color: #f8f9fa;
+  padding: 4rem 0 2rem;
+  margin-top: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.companyInfo {
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: $text-color;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.linkGroup {
+  h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: $text-color;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.social {
+  h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: $text-color;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.copyright {
+  padding-top: 2rem;
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}

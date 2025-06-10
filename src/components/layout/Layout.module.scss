@@ -1,0 +1,11 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-top: 60px; // 헤더 높이만큼 패딩
+  padding-bottom: 60px; // 푸터 높이만큼 패딩
+}
