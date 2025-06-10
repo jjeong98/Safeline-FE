@@ -49,7 +49,7 @@
 IDE: Cursor AI, VSCode
 Package Manager: npm or yarn
 
-🚀 시작하기 (Getting Started)
+<h1>🚀 시작하기 (Getting Started)</h1>
 로컬 환경에서 이 프로젝트를 실행하려면 다음 단계를 따르세요.
 
 1. 저장소 복제 (Clone the repository):
@@ -58,6 +58,7 @@ Bash
 
 git clone [저장소_URL]
 cd [프로젝트_폴더명]
+
 2. 의존성 설치 (Install dependencies):
 
 Bash
@@ -65,10 +66,12 @@ Bash
 npm install
 # 또는
 yarn install
+
 3. 환경 변수 설정 (Environment variables):
 루트 디렉터리에 .env 파일을 생성하고, 필요한 환경 변수를 추가합니다.
 
 REACT_APP_API_BASE_URL=http://localhost:8080/api/v1
+
 4. 개발 서버 실행 (Run the development server):
 
 Bash
@@ -78,7 +81,7 @@ npm start
 yarn start
 서버가 실행되면 http://localhost:3000 에서 프로젝트를 확인할 수 있습니다.
 
-🗺️ 향후 로드맵 (Future Roadmap)
+<h1>🗺️ 향후 로드맵 (Future Roadmap)</h1>
 
   다국어 지원: 영어, 일본어 등 다국어 콘텐츠 적용 및 UI/UX 현지화.
   가격 표시 기능: 내부 정책 결정 시, 실시간 동적 가격 표시 기능 추가.
@@ -86,8 +89,8 @@ yarn start
   고객별 콘텐츠 관리: 고객이 구매한 콘텐츠의 업데이트 및 관리를 위한 시스템 구축.
   고도화된 기술 지원: 상세 자료 검색, 문제 해결 가이드 등 기술 지원 기능 강화.
   
-🤝 기여하기 (Contributing)
+<h1>🤝 기여하기 (Contributing)</h1>
   프로젝트에 기여하고 싶으시다면, CONTRIBUTING.md 파일을 참고해주세요. (현재는 placeholder)
 
-📜 라이선스 (License)
+<h1>📜 라이선스 (License)</h1>
   이 프로젝트는 MIT License 하에 배포됩니다. (현재는 placeholder)
