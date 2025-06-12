@@ -8,28 +8,29 @@ const GlobalFooter: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.companyInfo}>
-            <h3>세이프라인</h3>
-            <p>대표: 홍길동</p>
-            <p>사업자등록번호: 123-45-67890</p>
-            <p>주소: 서울특별시 강남구 테헤란로 123</p>
-            <p>전화: 02-1234-5678</p>
-            <p>이메일: contact@safeline.com</p>
+            <div className={styles.logo}>
+              <img src="/logo_safeline_v3.png" alt="세이프라인" />
+            </div>
+
+            <p>Address: 서울시 강남구 강남대로 57길 18, 엠라인빌딩</p>
+            <p>Tel: 02-6053-1094</p>
+            <p>E-mail: safeline_team@m-line.tv</p>
           </div>
 
           <div className={styles.links}>
-            <div className={styles.linkGroup}>
+            {/* <div className={styles.linkGroup}>
               <h4>회사</h4>
-              <Link to="/about">회사소개</Link>
+              <Link to="/about">세이프라인</Link>
               <Link to="/solutions">솔루션</Link>
               <Link to="/cases">고객사례</Link>
-            </div>
+            </div> */}
 
-            <div className={styles.linkGroup}>
+            {/* <div className={styles.linkGroup}>
               <h4>지원</h4>
               <Link to="/support">기술지원</Link>
               <Link to="/faq">자주묻는질문</Link>
               <Link to="/contact">문의하기</Link>
-            </div>
+            </div> */}
 
             <div className={styles.linkGroup}>
               <h4>법적 고지</h4>
@@ -61,7 +62,8 @@ const GlobalFooter: React.FC = () => {
 
         <div className={styles.copyright}>
           <p>
-            &copy; {new Date().getFullYear()} 세이프라인. All rights reserved.
+            &copy; Copyright {new Date().getFullYear()} SAFELINE. All rights
+            reserved.
           </p>
         </div>
       </div>

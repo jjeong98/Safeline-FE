@@ -1,0 +1,25 @@
+@import "src/styles/global.scss";
+
+.caseDetail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: $primary-color;
+  }
+  h2 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    color: $text-color;
+  }
+  blockquote {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-left: 4px solid $primary-color;
+    color: #555;
+    font-style: italic;
+  }
+}

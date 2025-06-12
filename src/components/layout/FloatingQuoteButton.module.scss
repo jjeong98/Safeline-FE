@@ -1,0 +1,47 @@
+.floatingButton {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    background-color: darken($primary-color, 10%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  .icon {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .text {
+    display: block;
+  }
+
+  @include mobile {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.75rem 1.2rem;
+    font-size: 1rem;
+    .text {
+      display: none;
+    }
+  }
+}

@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import MainPage from "./pages/MainPage";
+import SolutionDetailPage from "./pages/SolutionDetailPage";
+import CaseDetailPage from "./pages/CaseDetailPage";
+// 아래는 샘플 플레이스홀더 페이지입니다. 실제 구현 시 각 파일로 대체
+// const SolutionsPage = () => (
+//   <div style={{ padding: 40 }}>솔루션 페이지 [플레이스홀더]</div>
+// );
+// const CasesPage = () => (
+//   <div style={{ padding: 40 }}>고객사례 페이지 [플레이스홀더]</div>
+// );
+// const SupportPage = () => (
+//   <div style={{ padding: 40 }}>지원/문의 페이지 [플레이스홀더]</div>
+// );
+//const NotFoundPage = () => <div style={{ padding: 40 }}>404 Not Found</div>;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/solutions" element={<SolutionDetailPage />} />
+          <Route path="/solutions/:id" element={<SolutionDetailPage />} />
+          <Route path="/cases" element={<CaseDetailPage />} />
+          <Route path="/cases/:id" element={<CaseDetailPage />} />
+          {/*<Route path="/support" element={<SupportPage />} />*/}
+          {/*<Route path="*" element={<NotFoundPage />} />*/}
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 

@@ -1,7 +1,18 @@
+@import "src/styles/global.scss";
+
 .footer {
   background-color: #f8f9fa;
   padding: 4rem 0 2rem;
   margin-top: auto;
+}
+
+.logo {
+  img {
+    height: 150px;
+    width: auto;
+    margin-top: -4rem;
+    margin-bottom: -2.5rem;
+  }
 }
 
 .container {

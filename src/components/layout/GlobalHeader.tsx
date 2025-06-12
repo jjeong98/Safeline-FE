@@ -19,7 +19,7 @@ const GlobalHeader: React.FC = () => {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo}>
-          <img src="/assets/images/logo.svg" alt="세이프라인" />
+          <img src="/logo_safeline_v3.png" alt="세이프라인" />
         </Link>
 
         <nav className={styles.nav}>
@@ -27,7 +27,7 @@ const GlobalHeader: React.FC = () => {
             to="/about"
             className={location.pathname === "/about" ? styles.active : ""}
           >
-            회사소개
+            세이프라인
           </Link>
           <Link
             to="/solutions"
