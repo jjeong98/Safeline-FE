@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./AboutSection.module.scss";
+import styles from "../scss/AboutSection.module.scss";
 
 const AboutSection: React.FC = () => {
   return (

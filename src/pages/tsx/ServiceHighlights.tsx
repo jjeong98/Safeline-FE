@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./ServiceHighlights.module.scss";
+import styles from "../scss/ServiceHighlights.module.scss";
 
 const services = [
   {

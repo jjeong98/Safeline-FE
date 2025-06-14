@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import styles from "./ClientLogos.module.scss";
+import styles from "../scss/ClientLogos.module.scss";
 
 const clients = [
   { id: 1, name: "삼성전자", logo: "/assets/logos/samsung.svg" },

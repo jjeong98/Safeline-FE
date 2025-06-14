@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import styles from "./CaseDetailPage.module.scss";
+import styles from "../scss/CaseDetailPage.module.scss";
+
 
 const CaseDetailPage: React.FC = () => {
   const { id } = useParams();

@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import styles from "./SolutionDetailPage.module.scss";
+import styles from "../scss/SolutionDetailPage.module.scss";
 
 const SolutionDetailPage: React.FC = () => {
   const { id } = useParams();
