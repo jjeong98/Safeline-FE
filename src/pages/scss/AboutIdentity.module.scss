@@ -1,0 +1,30 @@
+/* src/components/aboutPage/scss/AboutIdentity.module.scss */
+.identitySection {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff; // 히어로 섹션과 구분되는 배경
+  
+    // TODO: 스크롤 시 나타나는 애니메이션 효과 (예: opacity, transform)
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  
+    &.visible { // 스크롤 감지 시 이 클래스를 추가
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+  
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }

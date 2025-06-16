@@ -1,0 +1,73 @@
+/* src/components/aboutPage/scss/AboutPhilosophy.module.scss */
+@import 'src/styles/global.scss';
+
+.philosophySection {
+  padding: 4rem 2rem;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+}
+
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.philosophyCard {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cardVisual {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .cardText {
+    padding: 1.5rem;
+
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+}
+
+.ctaLink {
+  margin-top: 2rem;
+
+  a {
+    display: inline-block;
+    padding: 1rem 2rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #0056b3;
+    }
+  }
+}

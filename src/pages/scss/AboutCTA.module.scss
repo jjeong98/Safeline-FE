@@ -1,0 +1,21 @@
+/* src/components/aboutPage/scss/AboutCTA.module.scss */
+.ctaSection {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #212529; // 어두운 배경으로 마무리 (예시)
+    color: white;
+  
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+  }
+  .buttonGroup {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  
+    // 재사용 Button 컴포넌트의 스타일을 여기서 오버라이드 할 수 있으나,
+    // Button.module.scss에서 variant를 추가하는 것이 더 좋은 방법일 수 있습니다.
+    // 예: a.primaryButton {...} a.secondaryButton {...}
+  }

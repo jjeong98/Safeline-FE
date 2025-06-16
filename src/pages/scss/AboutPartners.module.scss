@@ -1,0 +1,36 @@
+/* src/components/aboutPage/scss/AboutPartners.module.scss */
+.partnersSection {
+    padding: 80px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+  
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+  }
+  
+  .logoWall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+  
+    img {
+      height: 40px; // 로고 높이 통일 (예시)
+      max-width: 150px;
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+  }

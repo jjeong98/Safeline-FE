@@ -1,0 +1,31 @@
+/* src/components/aboutPage/scss/AboutStats.module.scss */
+@import 'src/styles/global.scss';
+
+.statsSection {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 80px 20px;
+  background-color: #f8f9fa;
+}
+.statItem {
+  // TODO: 스크롤 시 나타나는 애니메이션 효과 (예: opacity, transform)
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+
+  &.visible { // 스크롤 감지 시 이 클래스를 추가
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.statNumber {
+  font-size: 4rem;
+  font-weight: bold;
+  color: $primary-color;
+}
+.statText {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #555;
+}
