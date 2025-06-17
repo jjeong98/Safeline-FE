@@ -11,8 +11,6 @@ const GlobalFooter: React.FC = () => {
             <div className={styles.logo}>
               <img src="/logo_safeline_v3.png" alt="세이프라인" />
             </div>
-
-            <p>Address: 서울시 강남구 강남대로 57길 18, 엠라인빌딩</p>
             <p>Tel: 02-6053-1094</p>
             <p>E-mail: safeline_team@m-line.tv</p>
           </div>

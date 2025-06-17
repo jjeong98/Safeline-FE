@@ -1,0 +1,36 @@
+/* src/pages/scss/CasesPage.module.scss */
+.casesPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+// 컨테이너가 화면에 보일 때, 자식 아이템(카드)들에게 애니메이션 실행
+// 이 방식은 자식 컴포넌트가 직접 .visible 클래스를 받는 대신,
+// 부모의 .visible 클래스를 통해 자식의 스타일을 제어합니다.
+.gridContainer.visible {
+  // ImpactCard의 .card 클래스를 타겟
+  :global(.card) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

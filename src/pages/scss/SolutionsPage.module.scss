@@ -1,0 +1,69 @@
+/* src/pages/scss/SolutionsPage.module.scss */
+@import "src/styles/global.scss";
+
+.solutionsPage {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 80px;
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 1.2rem;
+    color: $secondary-color;
+  }
+}
+
+.categorySection {
+  margin-bottom: 100px;
+}
+
+.categoryTitle {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid $primary-color;
+  display: inline-block;
+}
+
+.categoryDescription {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.gridContainer {
+  display: grid;
+  // auto-fit: 공간이 허락하는 한 많은 아이템을 넣음
+  // minmax(320px, 1fr): 아이템 최소 너비 320px, 최대 1fr(균등 분할)
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+// 자식 컴포넌트(SolutionCard)의 클래스명을 참조하여 애니메이션을 정의
+// SCSS의 :global 선택자 또는 자식 컴포넌트에서 직접 클래스를 받아 처리할 수 있습니다.
+// 여기서는 자식 컴포넌트의 클래스명이 '.card'라고 가정합니다.
+.gridContainer.visible {
+  // SolutionCard 컴포넌트의 루트 요소에 'card' 클래스가 있다고 가정
+  // 실제로는 SolutionCard.module.scss의 클래스명을 참조해야 함.
+  // 이 부분은 구조에 따라 조정이 필요할 수 있습니다.
+  // 여기서는 개념 설명을 위해 :global을 사용합니다.
+  :global(.card) {
+    opacity: 1;
+    transform: translateY(0);
+
+    // 순차적 등장을 위한 delay 설정 (날아오는 효과)
+    @for $i from 1 through 10 {
+      // 최대 10개 아이템까지 딜레이 설정
+      &:nth-child(#{$i}) {
+        transition-delay: #{$i * 0.1}s;
+      }
+    }
+  }
+}

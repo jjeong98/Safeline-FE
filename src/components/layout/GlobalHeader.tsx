@@ -41,12 +41,12 @@ const GlobalHeader: React.FC = () => {
           >
             고객사례
           </Link>
-          <Link
+          {/*<Link
             to="/support"
             className={location.pathname === "/support" ? styles.active : ""}
           >
             기술지원
-          </Link>
+          </Link>*/}
         </nav>
 
         <button className={styles.quoteButton}>견적문의</button>

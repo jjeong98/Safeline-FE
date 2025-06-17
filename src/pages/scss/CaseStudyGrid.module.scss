@@ -1,0 +1,46 @@
+.gridContainer {
+  /* SolutionsPage와 유사한 그리드 및 애니메이션 스타일 적용 */
+}
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+}
+.card {
+  /* SolutionCard와 유사한 카드 스타일 적용 */
+}
+.cardContent {
+  padding: 25px;
+}
+.clientLogo {
+  height: 30px;
+  margin-bottom: 20px;
+}
+.storyLine {
+  margin-bottom: 15px;
+  .label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .result {
+    font-weight: bold;
+    color: var(--primary-color, #0d6efd);
+  }
+}
+.readMore {
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: bold;
+  color: var(--primary-color, #0d6efd);
+}
+.noResults {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+  color: #888;
+}

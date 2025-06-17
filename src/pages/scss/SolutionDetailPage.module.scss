@@ -1,37 +1,85 @@
-@import "src/styles/global.scss";
+/* src/pages/scss/SolutionDetailPage.module.scss */
+@import "src/styles/global.scss"; // 전역 변수 및 믹스인 사용
 
-.solutionDetail {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
+.detailPageContainer {
+  // 페이지 전체 컨테이너
+}
+
+.heroSection {
+  height: 60vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-size: cover;
+  background-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
   h1 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: $primary-color;
+    font-size: 3.5rem;
+    margin: 0 0 10px 0;
   }
+  p {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
+
+.mainContent {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.contentSection {
+  margin-bottom: 60px;
   h2 {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-    color: $text-color;
+    font-size: 2rem;
+    margin-bottom: 20px;
   }
-  .image {
-    width: 120px;
-    margin-bottom: 2rem;
-    display: block;
+  p,
+  div {
+    line-height: 1.8;
   }
-  .cta {
-    margin-top: 2rem;
-    padding: 1rem 2rem;
-    background: $primary-color;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: background 0.2s;
-    &:hover {
-      background: darken($primary-color, 10%);
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
     }
   }
+}
+
+.sectionImage {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.backButtonContainer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.backButton {
+  // TODO: 공통 버튼 스타일 적용 또는 고유 스타일 정의
+  text-decoration: none;
+  color: $primary-color;
+  font-weight: bold;
 }

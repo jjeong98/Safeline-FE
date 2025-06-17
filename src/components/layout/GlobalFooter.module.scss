@@ -23,7 +23,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1fr;
   gap: 4rem;
   margin-bottom: 3rem;
 
@@ -51,6 +51,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  width: fit-content;
+  grid-column: 2;
 
   @include mobile {
     grid-template-columns: 1fr;
@@ -69,13 +71,13 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
+  width: fit-content;
 
   a {
     color: #666;
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.3s ease;
-    
 
     &:hover {
       color: $primary-color;
