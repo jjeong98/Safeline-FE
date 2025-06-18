@@ -1,121 +1,59 @@
-import React from "react";
-import { useInView } from "react-intersection-observer";
+import React, { useState, useEffect } from "react";
 import styles from "../scss/SolutionsPage.module.scss";
-import SolutionCard from "../tsx/SolutionCard";
-import { ISolutionCategory, ISolutionItem } from "../../types"; // 정의한 타입을 import 합니다.
+import SolutionCategorySection from "../tsx/SolutionCategorySection";
+import { ISolutionCategory } from "../../types"; // 타입 정의 파일
+import { getSolutions } from "../../services/apiService"; // 방금 만든 API 호출 함수
 
 /**
- * SolutionCategory 컴포넌트의 props 타입을 정의합니다.
+ * 전체 솔루션 라인업을 보여주는 허브 페이지.
+ * 이제 백엔드 API로부터 데이터를 직접 받아와 렌더링합니다.
  */
-interface SolutionCategoryProps {
-  title: string;
-  description: string;
-  items: ISolutionItem[];
-}
-
-/**
- * 각 솔루션 카테고리 섹션을 위한 재사용 컴포넌트.
- * props에 명시적으로 타입을 지정하여 에러를 해결합니다.
- */
-const SolutionCategory = ({
-  title,
-  description,
-  items,
-}: SolutionCategoryProps) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-    delay: 100,
-  });
-
-  return (
-    <section className={styles.categorySection}>
-      <h2 className={styles.categoryTitle}>{title}</h2>
-      <p className={styles.categoryDescription}>{description}</p>
-      <div
-        ref={ref}
-        className={`${styles.gridContainer} ${inView ? styles.visible : ""}`}
-      >
-        {/*
-          'items'가 ISolutionItem[] 타입임을 알기 때문에,
-          TypeScript는 자동으로 'item'이 ISolutionItem 타입이고, 'index'가 number 타입임을 추론할 수 있습니다.
-          따라서 .map() 내부의 에러도 함께 해결됩니다.
-        */}
-        {items.map((item, index) => (
-          <div key={index} className={styles.gridItemWrapper}>
-            <SolutionCard item={item} />
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 function SolutionsPage() {
-  // 카탈로그 기반으로 정리된 목업(mockup) 데이터
-  const solutionCategories = [
-    {
-      title: "하드웨어 솔루션",
-      description: "산업 현장의 몰입감을 극대화하는 혁신적인 XR 체험 장비",
-      items: [
-        {
-          name: "SAFELINE M4D",
-          tagline: "세상에서 가장 스마트한 XR 4D 시뮬레이터",
-          image: "/assets/images/solution_m4d.jpg",
-          link: "/solutions/safeline-m4d",
-        },
-        {
-          name: "3-Axis Motion Simulator",
-          tagline: "시각적 실감을 넘어 동적 체감까지",
-          image: "/assets/images/solution_3axis.jpg",
-          link: "/solutions/3-axis-simulator",
-        },
-        {
-          name: "VR CARRIER",
-          tagline: "최고의 이동형 VR 집체 교육 솔루션",
-          image: "/assets/images/solution_carrier.jpg",
-          link: "/solutions/vr-carrier",
-        },
-        {
-          name: "Safeline Basic",
-          tagline: "일체형 키오스크로 편리하게 즐기는 PC VR",
-          image: "/assets/images/solution_basic.jpg",
-          link: "/solutions/safeline-basic",
-        },
-      ],
-    },
-    {
-      title: "소프트웨어 & 플랫폼",
-      description: "완벽한 VR 교육을 위한 강력하고 유연한 통합 운영 시스템",
-      items: [
-        {
-          name: "Total Management System (TMS)",
-          tagline: "단 한 명의 교육자가 실현하는 완벽한 VR 집체교육",
-          image: "/assets/images/solution_tms.jpg",
-          link: "/solutions/tms",
-        },
-      ],
-    },
-    {
-      title: "콘텐츠 패키지",
-      description: "국내 최다, 산업별/유형별 맞춤형 VR 안전 교육 콘텐츠",
-      items: [
-        {
-          name: "산업현장 사고체험 패키지",
-          tagline: "대표적인 산업 재해 및 작업 사고 VR 콘텐츠 8종",
-          image: "/assets/images/content_industrial.jpg",
-          link: "/solutions/content-industrial",
-        },
-        {
-          name: "화학물질 사고대응 패키지",
-          tagline: "다양한 화학사고 시나리오 기반 VR 콘텐츠 5종",
-          image: "/assets/images/content_chemical.jpg",
-          link: "/solutions/content-chemical",
-        },
-        // TODO: 다른 콘텐츠 패키지 추가
-      ],
-    },
-  ];
+  // 1. 상태 변수 설정: 데이터를 담을 'categories', 로딩 상태 'loading', 에러 상태 'error'
+  const [categories, setCategories] = useState<ISolutionCategory[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // 2. 데이터 가져오기: 컴포넌트가 처음 렌더링될 때 한 번만 API를 호출합니다.
+  useEffect(() => {
+    const fetchSolutions = async () => {
+      try {
+        // 이전에 우리가 JSON 구조로 설계했던 데이터가 여기에 담깁니다.
+        // 하지만 실제로는 categoryTitle을 기준으로 그룹화하는 로직이 필요합니다.
+        // 우선은 백엔드에서 받은 데이터를 그대로 사용합니다.
+        const rawData = await getSolutions();
+
+        // TODO: 백엔드에서 받은 flat list를 categoryTitle 기준으로 그룹화하는 로직 추가
+        // 지금은 모든 아이템을 하나의 카테고리로 묶는 임시 로직을 사용합니다.
+        const groupedData = [
+          {
+            title: "전체 솔루션",
+            description: "세이프라인이 제공하는 모든 솔루션 라인업입니다.",
+            items: rawData,
+          },
+        ];
+
+        setCategories(groupedData);
+        setError(null);
+      } catch (err) {
+        setError("솔루션 정보를 불러오는 데 실패했습니다.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSolutions();
+  }, []); // 빈 배열 []은 컴포넌트가 처음 마운트될 때 한 번만 실행하라는 의미
+
+  // 3. 조건부 렌더링
+  if (loading) {
+    return <div className={styles.loading}>로딩 중...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
 
   return (
     <div className={styles.solutionsPage}>
@@ -126,8 +64,8 @@ function SolutionsPage() {
           솔루션을 제공합니다.
         </p>
       </header>
-      {solutionCategories.map((category) => (
-        <SolutionCategory
+      {categories.map((category) => (
+        <SolutionCategorySection
           key={category.title}
           title={category.title}
           description={category.description}

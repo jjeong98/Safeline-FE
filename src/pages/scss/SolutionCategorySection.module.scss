@@ -1,0 +1,49 @@
+/* src/components/solutionsPage/scss/SolutionCategorySection.module.scss */
+@import "src/styles/global.scss";
+
+.categorySection {
+  margin-bottom: 100px;
+}
+
+.categoryTitle {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid $primary-color;
+  display: inline-block;
+}
+
+.categoryDescription {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+// 각 그리드 아이템의 초기 상태 (애니메이션 전)
+.gridItemWrapper {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+// 컨테이너가 화면에 보일 때, 자식 아이템들에게 애니메이션 실행
+.gridContainer.visible {
+  .gridItemWrapper {
+    opacity: 1;
+    transform: translateY(0);
+
+    // 순차적 등장을 위한 delay 설정 (날아오는 효과)
+    @for $i from 1 through 12 {
+      // 최대 12개 아이템까지 딜레이 설정
+      &:nth-child(#{$i}) {
+        transition-delay: #{$i * 0.1}s;
+      }
+    }
+  }
+}

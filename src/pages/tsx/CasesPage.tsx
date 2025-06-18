@@ -1,4 +1,3 @@
-// src/pages/tsx/CasesPage.tsx
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import styles from "../scss/CasesPage.module.scss";
