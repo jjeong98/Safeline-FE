@@ -33,14 +33,14 @@ function SolutionCategorySection({
     <section className={styles.categorySection}>
       <h2 className={styles.categoryTitle}>{title}</h2>
       <p className={styles.categoryDescription}>{description}</p>
-
       <div ref={ref} className={gridClasses}>
-        {items.map((item, index) => (
-          // 각 카드 아이템을 감싸는 wrapper를 두어, 여기에 애니메이션 delay를 적용합니다.
-          <div key={item.id || index} className={styles.gridItemWrapper}>
-            <SolutionCard item={item} />
-          </div>
-        ))}
+        {Array.isArray(items) &&
+          items.map((item, index) => (
+            // 각 카드 아이템을 감싸는 wrapper를 두어, 여기에 애니메이션 delay를 적용합니다.
+            <div key={item.id || index} className={styles.gridItemWrapper}>
+              <SolutionCard item={item} />
+            </div>
+          ))}
       </div>
     </section>
   );
