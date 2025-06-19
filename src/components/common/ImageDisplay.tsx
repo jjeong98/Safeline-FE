@@ -14,7 +14,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
   className,
 }) => {
   // public/image 폴더 기준 경로 생성
-  const imagePath = `/image/${src}`;
+  const imagePath = `/imimage.pngage/${src}`;
   return <img src={imagePath} alt={alt} style={style} className={className} />;
 };
 

@@ -11,6 +11,7 @@ import CaseDetailPage from "./pages/tsx/CaseDetailPage";
 import AboutPage from "./pages/tsx/AboutPage";
 import SolutionsPage from "./pages/tsx/SolutionsPage";
 import CasesPage from "./pages/tsx/CasesPage";
+//import ImageTest from "./components/ImageTest";
 
 function App() {
   return (

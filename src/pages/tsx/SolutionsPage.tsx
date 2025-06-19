@@ -8,6 +8,7 @@ import { getSolutions } from "../../services/apiService";
  * 전체 솔루션 라인업을 보여주는 허브 페이지 (/solutions).
  * 백엔드 API로부터 데이터를 직접 받아와 카테고리별로 그룹화하여 렌더링합니다.
  */
+
 function SolutionsPage() {
   const [categories, setCategories] = useState<ISolutionCategory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -33,18 +34,12 @@ function SolutionsPage() {
           return acc;
         }, [] as ISolutionCategory[]);
 
-        // 실제 첫 번째 카테고리에만 임시 아이템 추가
-        if (groupedData.length > 0) {
-          const testItem: ISolutionItem = {
-            id: "test-m4d",
-            categoryTitle: groupedData[0].title,
-            name: "M4D 메인 솔루션",
-            tagline: "테스트용 태그라인",
-            image: "M4D.png",
-            link: "#",
-          };
-          groupedData[0].items.unshift(testItem);
-        }
+        console.log("groupedData", groupedData);
+        groupedData.forEach((category) => {
+          category.items.forEach((item) => {
+            console.log("item.image:", item.image);
+          });
+        });
 
         setCategories(groupedData);
       } catch (err) {
