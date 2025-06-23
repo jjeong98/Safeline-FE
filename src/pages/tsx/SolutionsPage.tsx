@@ -17,31 +17,9 @@ function SolutionsPage() {
   useEffect(() => {
     const fetchAndGroupSolutions = async () => {
       try {
-        const flatSolutionList: ISolutionItem[] = await getSolutions();
+        const groupedCategories: ISolutionCategory[] = await getSolutions();
 
-        // 백엔드에서 받은 데이터를 카테고리별로 그룹화하는 로직
-        const groupedData = flatSolutionList.reduce((acc, currentItem) => {
-          let category = acc.find((c) => c.title === currentItem.categoryTitle);
-          if (category) {
-            category.items.push(currentItem);
-          } else {
-            acc.push({
-              title: currentItem.categoryTitle,
-              description: `${currentItem.categoryTitle} 관련 솔루션입니다.`, // TODO: 설명은 별도 관리 필요
-              items: [currentItem],
-            });
-          }
-          return acc;
-        }, [] as ISolutionCategory[]);
-
-        console.log("groupedData", groupedData);
-        groupedData.forEach((category) => {
-          category.items.forEach((item) => {
-            console.log("item.image:", item.image);
-          });
-        });
-
-        setCategories(groupedData);
+        setCategories(groupedCategories);
       } catch (err) {
         setError("솔루션 정보를 불러오는 데 실패했습니다.");
       } finally {

@@ -1,14 +1,14 @@
 import axios from "axios";
-import { ISolutionItem, ICaseStudy } from "../types";
+import { ISolutionCategory, ICaseStudy } from "../types";
 
 // 백엔드 API 서버의 기본 주소. .env 파일로 관리하는 것이 좋습니다.
 const API_BASE_URL = "http://localhost:8080/api";
 
 /**
  * 모든 솔루션 목록을 가져오는 API 함수
- * @returns {Promise<ISolutionItem[]>} - API 응답 데이터
+ * @returns {Promise<ISolutionCategory[]>} - API 응답 데이터
  */
-export const getSolutions = async (): Promise<ISolutionItem[]> => {
+export const getSolutions = async (): Promise<ISolutionCategory[]> => {
   try {
     const response = await axios.get(`${API_BASE_URL}/solutions`);
     return response.data.solutionCategories;
