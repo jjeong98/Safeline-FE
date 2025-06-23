@@ -1,46 +1,38 @@
 import React, { useState, useEffect } from "react";
 import styles from "../scss/SolutionsPage.module.scss";
-import SolutionCategorySection from "../tsx/SolutionCategorySection";
-import { ISolutionCategory } from "../../types";
+//import SolutionCategorySection from "../tsx/SolutionCategorySection";
+import { ISolution } from "../../types";
 import { getSolutions } from "../../services/apiService";
-
-/**
- * 전체 솔루션 라인업을 보여주는 허브 페이지 (/solutions).
- * 백엔드 API로부터 데이터를 직접 받아와 카테고리별로 그룹화하여 렌더링합니다.
- */
+import { useInView } from "react-intersection-observer";
+import SolutionCard from "./SolutionCard";
 
 function SolutionsPage() {
-  const [categories, setCategories] = useState<ISolutionCategory[]>([]);
+  const [solutions, setSolutions] = useState<ISolution[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchAndGroupSolutions = async () => {
+    const fetchSolutions = async () => {
       try {
-        const groupedCategories: ISolutionCategory[] = await getSolutions();
-
-        setCategories(groupedCategories);
+        const data = await getSolutions();
+        setSolutions(data);
       } catch (err) {
         setError("솔루션 정보를 불러오는 데 실패했습니다.");
       } finally {
         setLoading(false);
       }
     };
-
-    fetchAndGroupSolutions();
+    fetchSolutions();
   }, []);
 
-  if (loading) {
-    return (
-      <div className={styles.loading}>
-        서버에서 솔루션 목록을 불러오는 중...
-      </div>
-    );
-  }
+  // 스크롤 애니메이션을 위한 설정
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
-  if (error) {
-    return <div className={styles.error}>{error}</div>;
-  }
+  if (loading) return <div className={styles.statusMessage}>로딩 중...</div>;
+  if (error) return <div className={styles.statusMessage}>{error}</div>;
 
   return (
     <div className={styles.solutionsPage}>
@@ -51,14 +43,19 @@ function SolutionsPage() {
           솔루션을 제공합니다.
         </p>
       </header>
-      {categories.map((category) => (
-        <SolutionCategorySection
-          key={category.title}
-          title={category.title}
-          description={category.description}
-          items={category.items}
-        />
-      ))}
+
+      {/* ▼▼▼ 이 부분이 핵심 수정 사항입니다 ▼▼▼
+        카테고리별로 map을 돌리는 대신, 전체 solutions 배열에 대해
+        하나의 gridContainer 안에서 map을 실행합니다.
+      */}
+      <main
+        ref={ref}
+        className={`${styles.gridContainer} ${inView ? styles.visible : ""}`}
+      >
+        {solutions.map((solution) => (
+          <SolutionCard key={solution.id} solution={solution} />
+        ))}
+      </main>
     </div>
   );
 }

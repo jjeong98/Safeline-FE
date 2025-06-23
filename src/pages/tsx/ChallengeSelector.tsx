@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "../scss/ChallengeSelector.module.scss";
-import { IChallenge } from "../../types";
+import { ISolution } from "../../types";
 
 interface ChallengeSelectorProps {
-  challenges: IChallenge[];
+  challenges: ISolution[];
   activeChallenge: string;
   onSelectChallenge: (id: string) => void;
 }
