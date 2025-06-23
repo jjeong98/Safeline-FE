@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../scss/SolutionsPage.module.scss";
 import SolutionCategorySection from "../tsx/SolutionCategorySection";
-import { ISolutionCategory, ISolutionItem } from "../../types";
+import { ISolutionCategory } from "../../types";
 import { getSolutions } from "../../services/apiService";
 
 /**
